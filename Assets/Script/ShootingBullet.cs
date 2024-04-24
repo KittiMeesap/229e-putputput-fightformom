@@ -17,9 +17,9 @@ public class ShootingBullet : MonoBehaviour
         if (collision.tag == "Player")
             return;
 
-        //if (collision.GetComponent<ShootingBullet>())
-           //collision.GetComponent<ShootingBullet>().Action();
-
+        if (collision.GetComponent<ShootingAction>())
+           collision.GetComponent<ShootingAction>().Action();
+        //Destory
         Destroy(gameObject);
     }
 

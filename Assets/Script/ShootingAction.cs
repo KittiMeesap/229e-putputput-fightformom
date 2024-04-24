@@ -5,15 +5,8 @@ public class ShootingAction : MonoBehaviour
 {
     public UnityEvent action;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Action()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        action?.Invoke();
     }
 }

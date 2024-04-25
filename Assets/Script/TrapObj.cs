@@ -15,8 +15,8 @@ public class TrapObj : MonoBehaviour
     {
         if (collision.tag == "Player") 
         {
-            FindAnyObjectByType<HealthBar>().LoseHealth(decayAmount);
-            FindAnyObjectByType<LifeCount>().LoseLife();
+            FindObjectOfType<HealthBar>().LoseHealth(decayAmount);
+            FindObjectOfType<LifeCount>().LoseLife();
         }
     }
 

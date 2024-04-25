@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
+        if (CanMove() == false)
             return;
 
         //set button for move
@@ -54,6 +54,16 @@ public class PlayerController : MonoBehaviour
             jump = false;
         
         
+    }
+
+    bool CanMove()
+    {
+        bool can = true;
+
+        if (isDead)
+            can = false;
+
+        return can;
     }
     private void FixedUpdate()
     {
@@ -113,7 +123,12 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        FindAnyObjectByType<LevelManager>().Restart();
+        FindObjectOfType<LevelManager>().Restart();
+    }
+
+    public void ResetPlayer()
+    {
+        isDead = false;
     }
 
 }

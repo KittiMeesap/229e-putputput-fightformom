@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
 
         if (health <= 0)
         {
-            FindAnyObjectByType<PlayerController>().Die();
+            FindObjectOfType<LevelManager>().Restart();
         }
     }
 

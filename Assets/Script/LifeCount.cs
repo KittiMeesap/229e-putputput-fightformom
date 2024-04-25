@@ -18,7 +18,7 @@ public class LifeCount : MonoBehaviour
 
         if (livesRemaining == 0)
         {
-            FindAnyObjectByType<PlayerController>().Die();
+            FindObjectOfType<PlayerController>().Die();
         }
     }
 }

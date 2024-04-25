@@ -8,7 +8,7 @@ public class LifeCount : MonoBehaviour
     public Image[] lives;
     public int livesRemaining;
 
-    private void LoseLife()
+    public void LoseLife()
     {
         if (livesRemaining == 0)
             return;
@@ -18,7 +18,7 @@ public class LifeCount : MonoBehaviour
 
         if (livesRemaining == 0)
         {
-            Debug.Log("You Lose");
+            FindAnyObjectByType<PlayerController>().Die();
         }
     }
 }

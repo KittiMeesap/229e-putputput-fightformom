@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("You Die");
+            FindAnyObjectByType<PlayerController>().Die();
         }
     }
 

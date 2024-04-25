@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     bool isRunning;
     bool facingRight = true;
     bool jump;
+    bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            return;
 
         //set button for move
         horizontalVaule = Input.GetAxisRaw("Horizontal");
@@ -107,14 +110,10 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Die()
     {
-        if (collision.tag == "Player")
-        {
-            Debug.Log("Trap");
-        }
+        isDead = true;
+        FindAnyObjectByType<LevelManager>().Restart();
     }
-
 
 }

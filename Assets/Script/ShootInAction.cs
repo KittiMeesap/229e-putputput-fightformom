@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShootingAction : MonoBehaviour
+public class ShootInAction : MonoBehaviour
 {
     public UnityEvent action;
 
@@ -9,4 +11,5 @@ public class ShootingAction : MonoBehaviour
     {
         action?.Invoke();
     }
+
 }

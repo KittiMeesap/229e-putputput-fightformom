@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingBullet : MonoBehaviour
+public class ShootingItem : MonoBehaviour
 {
     public float spd;
 
     private void Update()
     {
-        //bullet move
         transform.Translate(transform.right * transform.localScale.x * spd * Time.deltaTime);
     }
 
@@ -17,10 +16,9 @@ public class ShootingBullet : MonoBehaviour
         if (collision.tag == "Player")
             return;
 
-        if (collision.GetComponent<ShootingAction>())
-           collision.GetComponent<ShootingAction>().Action();
-        //Destory
+        if (collision.GetComponent<ShootInAction>())
+            collision.GetComponent<ShootInAction>().Action();
+
         Destroy(gameObject);
     }
-
 }

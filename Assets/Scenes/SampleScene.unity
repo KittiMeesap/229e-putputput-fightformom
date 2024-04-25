@@ -901,7 +901,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd: 1
-  isRunning: 0
 --- !u!114 &1833875364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,8 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d597d635b7807674b84cf762ae773440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 1
-  isRunning: 0
+  spd: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

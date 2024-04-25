@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb2d;
     float horizontalVaule;
-    [SerializeField] bool isRunning = false;
+    float runSpd = 2f;
+    bool isRunning = false;
     bool facingRight = true;
 
     // Start is called before the first frame update
@@ -20,11 +21,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //set button for move
         horizontalVaule = Input.GetAxisRaw("Horizontal");
 
+        //enable run
         if(Input.GetKeyDown(KeyCode.LeftShift))
             isRunning = true;
-
+        //disble run
         if (Input.GetKeyUp(KeyCode.LeftShift))
             isRunning = false;
         
@@ -39,8 +42,14 @@ public class PlayerController : MonoBehaviour
     {
         //Set value X using dir and speed
         float xVal = dir * spd * 100 *  Time.deltaTime;
+
+        //if runing 
+        if (isRunning)
+            xVal *= runSpd; 
+
         //Create Vec2 for the velocity
         Vector2 targetVelocity = new Vector2(dir,rb2d.velocity.y);
+
         //Player Velocity
         rb2d.velocity = targetVelocity;
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,8 +26,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform shootPoint;
     [SerializeField] Rigidbody2D bulletPrefabs;
-    [SerializeField] GameObject target;
-
 
     // Start is called before the first frame update
     void Start()
@@ -57,19 +56,12 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonUp("Jump"))
             jump = false;
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            // Assuming you have variables such as 'target', 'shootPoint', and 'bulletPrefabs' defined elsewhere
-            if (target != null && shootPoint != null && bulletPrefabs != null)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                Vector2 targetPosition = target.transform.position;
-                Vector2 projectile = CalculateProjectileVelocity(shootPoint.position, targetPosition, 1f);
+                Vector2 projectile = CalculateProjectileVelocity(shootPoint.position, 1f);
                 Rigidbody2D fireBullet = Instantiate(bulletPrefabs, shootPoint.position, Quaternion.identity);
                 fireBullet.velocity = projectile;
             }
-
-        }
-
     }
 
         bool CanMove()
@@ -148,28 +140,20 @@ public class PlayerController : MonoBehaviour
             isDead = false;
         }
 
-    Vector2 CalculateProjectileVelocity(Vector2 startPoint, Vector2 targetPoint, float timeToTarget)
+    Vector2 CalculateProjectileVelocity(Vector2 startPoint, float timeToTarget)
     {
         float gravity = Physics2D.gravity.magnitude;
-        Vector2 displacementY = targetPoint - startPoint;
-        displacementY.y = 0;
-        float y = displacementY.magnitude;
-        float Vyi = (y - 0.5f * gravity * timeToTarget * timeToTarget) / timeToTarget;
-        Vector2 velocityY = new Vector2(0, Vyi);
-        Vector2 displacementXZ = targetPoint - startPoint;
-        displacementXZ.y = 0;
-        float xz = displacementXZ.magnitude;
-        float Vxi = xz / timeToTarget;
-        Vector2 velocityXZ = displacementXZ.normalized * Vxi;
-        return velocityXZ + velocityY.normalized;
-    }
+        Vector2 displacement = Vector2.right - startPoint;
+        float displacementY = displacement.y;
+        displacement.y = 0;
+        float displacementXZ = displacement.magnitude;
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy")) 
-        {
-            Destroy(gameObject);
-        }
-    }
+        float Vyi = (displacementY - 0.5f * gravity * timeToTarget * timeToTarget) / timeToTarget;
+        float Vxi = displacementXZ / timeToTarget;
 
+        Vector2 velocityY = Vector2.down * Vyi;
+        Vector2 velocityXZ = displacement.normalized * Vxi;
+
+        return velocityXZ + velocityY;
+    }
 }

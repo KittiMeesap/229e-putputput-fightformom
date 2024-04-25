@@ -58,10 +58,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Vector2 projectile = CalculateProjectileVelocity(shootPoint.position, 1f);
-                Rigidbody2D fireBullet = Instantiate(bulletPrefabs, shootPoint.position, Quaternion.identity);
-                fireBullet.velocity = projectile;
-            }
+            Vector2 projectile = CalculateProjectileVelocity(shootPoint.position, 1f);
+            Rigidbody2D fireBullet = Instantiate(bulletPrefabs, shootPoint.position, Quaternion.identity);
+
+
+            fireBullet.AddForce(projectile, ForceMode2D.Impulse);
+        }
     }
 
         bool CanMove()
@@ -142,18 +144,12 @@ public class PlayerController : MonoBehaviour
 
     Vector2 CalculateProjectileVelocity(Vector2 startPoint, float timeToTarget)
     {
-        float gravity = Physics2D.gravity.magnitude;
-        Vector2 displacement = Vector2.right - startPoint;
-        float displacementY = displacement.y;
-        displacement.y = 0;
-        float displacementXZ = displacement.magnitude;
+        float Vxi = startPoint.x > 0 ? -1f / timeToTarget : 1f / timeToTarget;
 
-        float Vyi = (displacementY - 0.5f * gravity * timeToTarget * timeToTarget) / timeToTarget;
-        float Vxi = displacementXZ / timeToTarget;
+        float Vyi = (Physics2D.gravity.magnitude * timeToTarget) / 2f;
 
-        Vector2 velocityY = Vector2.down * Vyi;
-        Vector2 velocityXZ = displacement.normalized * Vxi;
+        Vector2 velocity = new Vector2(Vxi, Vyi);
 
-        return velocityXZ + velocityY;
+        return velocity;
     }
 }

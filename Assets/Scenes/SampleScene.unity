@@ -2203,7 +2203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  m_Sprite: {fileID: 143021600, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3015,7 +3015,6 @@ GameObject:
   - component: {fileID: 1833875360}
   - component: {fileID: 1833875359}
   - component: {fileID: 1833875363}
-  - component: {fileID: 1833875366}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3177,7 +3176,6 @@ MonoBehaviour:
   isGrounded: 0
   shootPoint: {fileID: 337463711}
   bulletPrefabs: {fileID: 6032563957192147127, guid: dbbd460e3d960d24d949927eb35b7b36, type: 3}
-  target: {fileID: 21842053}
 --- !u!95 &1833875365
 Animator:
   serializedVersion: 5
@@ -3199,23 +3197,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1833875366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833875358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c90d08f1bd46124ba50eea967a231a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 4933693676142019924, guid: dbbd460e3d960d24d949927eb35b7b36, type: 3}
-  shootingPoint: {fileID: 337463711}
-  canShoot: 1
-  shootForce: 500
-  downForce: 0.5
 --- !u!1 &1838757502
 GameObject:
   m_ObjectHideFlags: 0

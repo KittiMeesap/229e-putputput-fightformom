@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 458833174}
   - component: {fileID: 458833177}
   - component: {fileID: 458833176}
-  - component: {fileID: 458833178}
+  - component: {fileID: 458833180}
   - component: {fileID: 458833179}
   m_Layer: 0
   m_Name: Player
@@ -446,26 +446,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &458833178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458833173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0a482c3c7eaff4a94fc0a7106bfc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spd: 5
-  jumpForce: 5
-  groundCheck: {fileID: 654003868}
-  checkRadius: 0.5
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  extraJumpsValue: 2
 --- !u!114 &458833179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +461,19 @@ MonoBehaviour:
   bullet: {fileID: 1420260670139468092, guid: dbbd460e3d960d24d949927eb35b7b36, type: 3}
   shootingPoint: {fileID: 337463711}
   canShoot: 1
+--- !u!114 &458833180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458833173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d597d635b7807674b84cf762ae773440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spd: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 458833175}
   offset: {x: 0, y: 0, z: -10}
+  smoothFactor: 3
 --- !u!1 &558774173
 GameObject:
   m_ObjectHideFlags: 0

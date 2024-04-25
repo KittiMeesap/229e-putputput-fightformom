@@ -12,13 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     const float groundCheckRadius = 0.2f;
-    [SerializeField] float spd = 1f;
+    [SerializeField] float spd = 2f;
+    [SerializeField] float jumpPower = 300;
     float horizontalVaule;
     float runSpdModifier = 2f;
 
     [SerializeField] bool isGrounded = false;
     bool isRunning = false;
     bool facingRight = true;
+    bool jump = true;
 
     // Start is called before the first frame update
     void Start()
@@ -39,25 +41,43 @@ public class PlayerController : MonoBehaviour
         //disble run
         if (Input.GetKeyUp(KeyCode.LeftShift))
             isRunning = false;
+
+        //Jump Input
+        if (Input.GetButtonDown("Jump"))
+            jump = true;
+        else if(Input.GetButtonUp("Jump"))
+            jump = false;
+        
         
     }
     private void FixedUpdate()
     {
         GroundCheck();
-        Move(horizontalVaule);
+        Move(horizontalVaule,jump);
     }
 
     void GroundCheck()
     {
         isGrounded = false;
+
         Collider2D[] collider = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
         if(collider.Length > 0)
             isGrounded = true;
     }
 
     //Code for Move
-    void Move(float dir)
+    void Move(float dir,bool jumpFlag)
     {
+        //Jump
+
+        if(isGrounded && jumpFlag)
+        {
+            isGrounded = false;
+            jumpFlag = false;
+            rb2d.AddForce(new Vector2(0f, jumpPower));
+        }
+
+        //Move and Run
         //Set value of x using dir and speed
         float xVal = dir * spd * 100 * Time.fixedDeltaTime;
 

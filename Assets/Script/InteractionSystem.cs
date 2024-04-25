@@ -14,6 +14,7 @@ public class InteractionSystem : MonoBehaviour
     public GameObject examineWindow;
     public Image examaineImage;
     public Text examineText;
+    public bool isExamining;
     [Header("Others")]
     public List<GameObject> pickedItems = new List<GameObject>();
 
@@ -62,7 +63,20 @@ public class InteractionSystem : MonoBehaviour
 
     public void ExamineItem(Item item)
     {
+        if (isExamining)
+        {
+           examineWindow.SetActive(false);
+           isExamining = false;
+        }
+        else
+        {
+            examaineImage.sprite = item.GetComponent<SpriteRenderer>().sprite;
 
+            examineText.text = item.descriptionText;
+
+            examineWindow.SetActive(true);
+
+            isExamining = true;
+        }
     }
-
 }

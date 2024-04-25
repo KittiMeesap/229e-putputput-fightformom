@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
     public InteractionType type;
 
     [Header("Examine")]
-    public string descriptText;
+    public string descriptionText;
     public Sprite image;
 
     private void Reset()
@@ -34,6 +34,7 @@ public class Item : MonoBehaviour
                 break;
                 
             case InteractionType.Examine:
+                FindObjectOfType<InteractionSystem>().ExamineItem(this);
                 break;
 
             default:

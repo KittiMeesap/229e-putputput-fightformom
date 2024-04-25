@@ -1189,6 +1189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  descriptionText: 
+  image: {fileID: 0}
 --- !u!1 &1264834275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,6 +2209,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   detectedObj: {fileID: 0}
+  examineWindow: {fileID: 0}
+  examaineImage: {fileID: 0}
+  examineText: {fileID: 0}
   pickedItems: []
 --- !u!1 &1838757502
 GameObject:

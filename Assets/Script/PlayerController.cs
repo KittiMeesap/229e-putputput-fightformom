@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!CanMove() == false)
+            return;
         //set button for move
         horizontalVaule = Input.GetAxisRaw("Horizontal");
 
@@ -55,6 +57,16 @@ public class PlayerController : MonoBehaviour
     {
         GroundCheck();
         Move(horizontalVaule,jump);
+    }
+
+    bool CanMove()
+    {
+        bool can = true;
+
+        if (FindObjectOfType<InteractionSystem>().isExamining)
+            can = false;
+
+        return can;
     }
 
     void GroundCheck()
@@ -106,4 +118,6 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
     }
+
+
 }

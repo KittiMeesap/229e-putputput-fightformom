@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     public float spd = 1f;
 
     Rigidbody2D rb2d;
+    Animator animator;
     float horizontalVaule;
-    float runSpd = 2f;
+    float runSpdModifier = 2f;
     bool isRunning = false;
     bool facingRight = true;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
         horizontalVaule = Input.GetAxisRaw("Horizontal");
 
         //enable run
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             isRunning = true;
         //disble run
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -40,31 +42,31 @@ public class PlayerController : MonoBehaviour
     //Code for Move
     void Move(float dir)
     {
-        //Set value X using dir and speed
-        float xVal = dir * spd * 100 *  Time.deltaTime;
+        //Set value of x using dir and speed
+        float xVal = dir * spd * 100 * Time.deltaTime;
 
-        //if runing 
         if (isRunning)
-            xVal *= runSpd; 
+            xVal *= runSpdModifier;
 
-        //Create Vec2 for the velocity
-        Vector2 targetVelocity = new Vector2(dir,rb2d.velocity.y);
+        //Create Vec2 for the Velocity
+        Vector2 targetVelocity = new Vector2(xVal, rb2d.velocity.y);
 
-        //Player Velocity
+        //Set the players Velocity
         rb2d.velocity = targetVelocity;
 
-        //flip to left
+        //If looking right and press left, turn left
         if (facingRight && dir < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             facingRight = false;
         }
-        //flip to right
+        //If looking left and press right, turn to the right
         else if (!facingRight && dir > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             facingRight = true;
         }
 
+        animator.SetFloat("xVelocity", Mathf.Abs(rb2d.velocity.x));
     }
 }

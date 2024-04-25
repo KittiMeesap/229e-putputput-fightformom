@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 36937755}
   m_Layer: 6
   m_Name: TileGround15 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 287467478}
   m_Layer: 6
   m_Name: TileGround14
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 524262771}
   m_Layer: 6
   m_Name: TileGround19
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1981,7 +1981,7 @@ GameObject:
   - component: {fileID: 1264834278}
   m_Layer: 6
   m_Name: TileGround17
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2384,7 +2384,7 @@ GameObject:
   - component: {fileID: 1571524955}
   m_Layer: 6
   m_Name: TileGround16 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 1593786645}
   m_Layer: 6
   m_Name: TileGround15
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2644,7 +2644,7 @@ GameObject:
   - component: {fileID: 1740334263}
   m_Layer: 6
   m_Name: TileGround18
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 1789800272}
   m_Layer: 6
   m_Name: TileGround14 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3175,7 +3175,7 @@ MonoBehaviour:
   jumpPower: 100
   isGrounded: 0
   shootPoint: {fileID: 337463711}
-  bulletPrefabs: {fileID: 6032563957192147127, guid: dbbd460e3d960d24d949927eb35b7b36, type: 3}
+  bulletPrefabs: {fileID: 8820765004865251370, guid: dbbd460e3d960d24d949927eb35b7b36, type: 3}
 --- !u!95 &1833875365
 Animator:
   serializedVersion: 5
@@ -3210,7 +3210,7 @@ GameObject:
   - component: {fileID: 1838757505}
   m_Layer: 6
   m_Name: TileGround16
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

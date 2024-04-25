@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float spd = 1f;
+    
 
     Rigidbody2D rb2d;
     Animator animator;
+    [SerializeField] Transform groundCheckCollider;
+    [SerializeField] LayerMask groundLayer;
+
+    const float groundCheckRadius = 0.2f;
+    [SerializeField] float spd = 1f;
     float horizontalVaule;
     float runSpdModifier = 2f;
+
+    [SerializeField] bool isGrounded = false;
     bool isRunning = false;
     bool facingRight = true;
 
@@ -36,14 +43,23 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        GroundCheck();
         Move(horizontalVaule);
+    }
+
+    void GroundCheck()
+    {
+        isGrounded = false;
+        Collider2D[] collider = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
+        if(collider.Length > 0)
+            isGrounded = true;
     }
 
     //Code for Move
     void Move(float dir)
     {
         //Set value of x using dir and speed
-        float xVal = dir * spd * 100 * Time.deltaTime;
+        float xVal = dir * spd * 100 * Time.fixedDeltaTime;
 
         if (isRunning)
             xVal *= runSpdModifier;

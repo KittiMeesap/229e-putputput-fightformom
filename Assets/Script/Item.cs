@@ -14,6 +14,10 @@ public class Item : MonoBehaviour
 
     public InteractionType type;
 
+    [Header("Examine")]
+    public string descriptText;
+    public Sprite image;
+
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;

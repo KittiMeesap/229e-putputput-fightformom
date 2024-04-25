@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class InteractionSystem : MonoBehaviour
     private const float detectionRadius = 0.2f;
     public LayerMask detectionLayber;
     public GameObject detectedObj;
+    [Header("Examine Fields")]
+    public GameObject examineWindow;
+    public Image examaineImage;
+    public Text examineText;
     [Header("Others")]
     public List<GameObject> pickedItems = new List<GameObject>();
 
@@ -53,6 +58,11 @@ public class InteractionSystem : MonoBehaviour
     public void PickUpItems(GameObject item)
     {
         pickedItems.Add(item);    
+    }
+
+    public void ExamineItem(Item item)
+    {
+
     }
 
 }

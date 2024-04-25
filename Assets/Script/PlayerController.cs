@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     float horizontalVaule;
     float runSpdModifier = 2f;
 
-    [SerializeField] bool isGrounded = false;
-    bool isRunning = false;
+    [SerializeField] bool isGrounded;
+    bool isRunning;
     bool facingRight = true;
-    bool jump = true;
+    bool jump;
+
 
     // Start is called before the first frame update
     void Start()

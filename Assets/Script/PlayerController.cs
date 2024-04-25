@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!CanMove() == false)
+        if (CanMove() == false)
             return;
+
         //set button for move
         horizontalVaule = Input.GetAxisRaw("Horizontal");
 

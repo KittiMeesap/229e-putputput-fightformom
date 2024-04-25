@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class InteractionSystem : MonoBehaviour
     [Header("Examine Fields")]
     public GameObject examineWindow;
     public Image examaineImage;
-    public Text examineText;
+    public TMP_Text examineText;
     public bool isExamining;
     [Header("Others")]
     public List<GameObject> pickedItems = new List<GameObject>();

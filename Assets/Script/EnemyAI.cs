@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position,goalPoint.position,speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position,goalPoint.position) < 1f)
+        if (Vector2.Distance(transform.position,goalPoint.position) < 0.2f)
         {
             if (nextID == points.Count -1)
             {

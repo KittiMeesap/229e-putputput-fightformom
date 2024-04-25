@@ -8,6 +8,7 @@ public class BoxController : MonoBehaviour
 
     Rigidbody2D rb2d;
     float horizontalVaule;
+    bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +35,19 @@ public class BoxController : MonoBehaviour
         Vector2 targetVelocity = new Vector2(dir,rb2d.velocity.y);
         //Player Velocity
         rb2d.velocity = targetVelocity;
+
+        //flip to left
+        if (facingRight && dir < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            facingRight = false;
+        }
+        //flip to right
+        else if (!facingRight && dir > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            facingRight = true;
+        }
+
     }
 }

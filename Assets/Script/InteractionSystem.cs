@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour
 {
+    [Header("Detection Parameters")]
     public Transform detectionPoint;
     private const float detectionRadius = 0.2f;
     public LayerMask detectionLayber;
     public GameObject detectedObj;
+    [Header("Others")]
+    public List<GameObject> pickedItems = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,11 @@ public class InteractionSystem : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(detectionPoint.position, detectionRadius);
+    }
+
+    public void PickUpItems(GameObject item)
+    {
+        pickedItems.Add(item);    
     }
 
 }

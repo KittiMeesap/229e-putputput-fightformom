@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     bool jump;
     bool isDead = false;
 
+    [SerializeField] Transform shootPoint;
+    [SerializeField] Rigidbody2D bulletPrefabs;
+    [SerializeField] GameObject target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +56,25 @@ public class PlayerController : MonoBehaviour
             jump = true;
         else if(Input.GetButtonUp("Jump"))
             jump = false;
-        
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.magenta, 8f);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+
+            if (hit.collider != null)
+            {
+                target.transform.position = new Vector2(hit.point.x, hit.point.y);
+                Debug.Log($"hit point : {hit.point.x} , {hit.point.y}");
+
+                Vector2 projecttile = CalculateProjectileVelocity(shootPoint.position, hit.point, 1f);
+                Rigidbody2D fireBullet = Instantiate(bulletPrefabs, shootPoint.position, Quaternion.identity);
+                fireBullet.velocity = projecttile;
+            }
+        }
+
+
     }
 
     bool CanMove()
@@ -129,6 +150,16 @@ public class PlayerController : MonoBehaviour
     public void ResetPlayer()
     {
         isDead = false;
+    }
+
+    Vector2 CalculateProjectileVelocity(Vector2 origin, Vector2 target, float t)
+    {
+        Vector2 distance = target - origin;
+
+        float velocityX = distance.x / t;
+        float velocityY = distance.y / t + 0.5f * Mathf.Abs(Physics2D.gravity.y);
+        Vector2 XnY = new Vector2(velocityX, velocityY);
+        return XnY;
     }
 
 }

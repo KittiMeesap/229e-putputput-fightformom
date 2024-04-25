@@ -1184,7 +1184,7 @@ MonoBehaviour:
   - {fileID: 138193146}
   - {fileID: 855927938}
   - {fileID: 1319181137}
-  livesRemaining: 0
+  livesRemaining: 4
 --- !u!1 &654003867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +2003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d242feaf9f999c428f1b3e4a98e0405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fillBar: {fileID: 1214948178}
+  health: 100
 --- !u!1 &1426603596
 GameObject:
   m_ObjectHideFlags: 0

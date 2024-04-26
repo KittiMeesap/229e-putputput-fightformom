@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
             isDead = false;
         }
 
+
     Vector2 CalculateProjectileVelocity(Vector2 startPoint, float timeToTarget)
     {
         float Vxi = startPoint.x > 0 ? -1f / timeToTarget : 1f / timeToTarget;

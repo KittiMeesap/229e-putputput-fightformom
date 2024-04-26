@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Mom : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collsion)
     {
-        if (other.tag == "Player")
+        if (collsion.tag == "Player")
         {
             SceneManager.LoadScene(4);
         }

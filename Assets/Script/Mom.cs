@@ -9,7 +9,7 @@ public class Mom : MonoBehaviour
     {
         if (collsion.tag == "Player")
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
     }
 }

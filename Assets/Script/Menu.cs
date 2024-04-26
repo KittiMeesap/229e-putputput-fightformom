@@ -24,6 +24,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadSceneAsync(3);
     }
 
+    public void CreditAsset()
+    {
+        SceneManager.LoadSceneAsync(4);
+    }
+
     public void HowToPlay()
     { 
         SceneManager.LoadSceneAsync(2);

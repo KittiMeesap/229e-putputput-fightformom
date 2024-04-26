@@ -145,11 +145,11 @@ public class PlayerController : MonoBehaviour
 
     Vector2 CalculateProjectileVelocity(Vector2 startPoint, float timeToTarget)
     {
-        float Vxi = startPoint.x > 0 ? -1f / timeToTarget : 1f / timeToTarget;
+        float VeloX = startPoint.x > 0 ? -1f / timeToTarget : 1f / timeToTarget;
 
-        float Vyi = (Physics2D.gravity.magnitude * timeToTarget) / 2f;
+        float VeloY = (Physics2D.gravity.magnitude * timeToTarget) / 2f;
 
-        Vector2 velocity = new Vector2(Vxi, Vyi);
+        Vector2 velocity = new Vector2(VeloX, VeloY);
 
         return velocity;
     }
